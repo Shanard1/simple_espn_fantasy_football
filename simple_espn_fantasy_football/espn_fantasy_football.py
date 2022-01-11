@@ -2,9 +2,7 @@
 import requests
 
 from datetime import datetime
-from os import environ # Remove later
 from typing import Union
-from yaml import load, FullLoader # Remove later
 
 
 class EspnFantasyFootball:
@@ -40,7 +38,6 @@ class EspnFantasyFootball:
         if year > 2018:
             # Responses come back as dicts
             espn_api_response = requests.get(self.new_url.format(id=self.league_id, year=year), cookies=self.cookies, params={'view': param})
-            #print({k:v for (k, v) in espn_api_response.__dict__.items() if k != '_content'})
             # Convert the response to json for easier parsing
             espn_resp_json = espn_api_response.json()
             return espn_resp_json
