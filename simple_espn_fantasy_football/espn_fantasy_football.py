@@ -49,9 +49,3 @@ class EspnFantasyFootball:
             espn_api_response = requests.get(self.old_url.format(year=year, id=self.league_id), cookies=self.cookies, params={'view': param})
             espn_resp_json = espn_api_response.json()
             return espn_resp_json[0]
-
-if __name__ == '__main__':
-    config_f    = open(environ['CONFIG_LOC'], 'r')
-    config_data = load(config_f, Loader=FullLoader)
-    pulls_on_parade = EspnFantasyFootball(swid=config_data['swid'], espn_s2=config_data['espn_s2'], league_id='199988')
-    pulls_on_parade_response = pulls_on_parade.get_view_data(2021, 'mTeam')
